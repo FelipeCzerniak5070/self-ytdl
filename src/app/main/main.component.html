@@ -22,7 +22,7 @@
                     <i *ngIf="item.items" [ngClass]="['ml-auto pi', root ? 'pi-angle-down' : 'pi-angle-right']"></i>
                 </a>
             </ng-template>
-            <ng-template #end>
+            <ng-template id="pesqAva" #end>
                 <div class="flex items-center gap-2">
                     <input type="text" pInputText placeholder="Search" class="w-36" />
                     <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" shape="circle" />
@@ -30,9 +30,11 @@
             </ng-template>
         </p-menubar>
         
-        <div class="card flex justify-center">
-            <p-button label="Baixar" id="baixar"/>
-        </div>
+        <section id="middle">
+                    <div class="card flex justify-center">
+                        <p-button label="Baixar" id="baixar"/>
+                    </div>
+        </section>
 
         <input type="text" pInputText/>
 
