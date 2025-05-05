@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <main>    
+        <p-menubar [model]="items">
+            <ng-template #start>
+                <svg width="33" height="35" viewBox="0 0 33 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="..." fill="var(--primary-color)" />
+                </svg>
+            </ng-template>
+            <ng-template #item let-item let-root="root">
+                <a pRipple class="flex items-center p-menubar-item-link">
+                    <span>{{ item.label }}</span>
+                    <p-badge *ngIf="item.badge" [ngClass]="{ 'ml-auto': !root, 'ml-2': root }" [value]="item.badge" />
+                    <span *ngIf="item.shortcut" class="ml-auto border border-surface rounded bg-emphasis text-muted-color text-xs p-1">{{ item.shortcut }}</span>
+                    <i *ngIf="item.items" [ngClass]="['ml-auto pi', root ? 'pi-angle-down' : 'pi-angle-right']"></i>
+                </a>
+            </ng-template>
+        </p-menubar>
+        
+        <section id="middle">
+                    <div class="card flex justify-center">
+                        <p-button label="Baixar" id="baixar" (click)="downloadVideo()"/>
+                    </div>
+        </section>
+        <section id="link-input">
+            
+            <input id="link-input-text-box" [(ngModel)]="videoUrl" type="text" placeholder="Cole seu link aqui" pInputText #linkInput/>
+            <p-button icon="pi pi-paste" (click)="pasteFromClipboard(linkInput)" styleClass="p-button-secondary ml-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" viewBox="0 0 384 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M280 64l40 0c35.3 0 64 28.7 64 64l0 320c0 35.3-28.7 64-64 64L64 512c-35.3 0-64-28.7-64-64L0 128C0 92.7 28.7 64 64 64l40 0 9.6 0C121 27.5 153.3 0 192 0s71 27.5 78.4 64l9.6 0zM64 112c-8.8 0-16 7.2-16 16l0 320c0 8.8 7.2 16 16 16l256 0c8.8 0 16-7.2 16-16l0-320c0-8.8-7.2-16-16-16l-16 0 0 24c0 13.3-10.7 24-24 24l-88 0-88 0c-13.3 0-24-10.7-24-24l0-24-16 0zm128-8a24 24 0 1 0 0-48 24 24 0 1 0 0 48z"/></svg>
+            </p-button>
+        </section>
+
+    </main>
+
+    
+</body>
+</html>

@@ -1,0 +1,50 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+main{
+    border-radius: 7px;
+    width: 100%;
+    height: calc(100vh - 16px);
+    border: 1px solid gray;
+    display:grid;
+    grid-template-rows: 10% 70% 20%;
+}
+
+#pesqAva{
+    width:70%;
+}
+
+p-avatar{
+    display: inline-block;
+}
+
+#baixar {
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+
+
+#middle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+input, #middle, p-menubar {
+    margin: 10px 10px;
+}
+
+#link-input{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+#link-input input{
+    width: 70%;
+}
