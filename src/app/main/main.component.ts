@@ -57,6 +57,8 @@ export class MainComponent {
       ];
   }
 
+  temUrl:boolean = false;
+
   async pasteFromClipboard(inputElement: HTMLInputElement) {
         try {
             const text = await navigator.clipboard.readText();
@@ -65,17 +67,32 @@ export class MainComponent {
             console.error('Falha ao colar da área de transferência', err);
         }
     }
+    teste(){
+        this.http.post('http://localhost:3000/teste',{url:this.videoUrl},{ responseType: 'text' })
+            .subscribe(
+                {
+                    next: (res) => {
+                        alert(res);
+                    },
+                    error: (error) => {
+                        console.error('Erro ao testar:', error);
+                    }
+                }
+        )
+    }
 
     downloadVideo() {
-        
         if (this.videoUrl) {
             this.http.post('http://localhost:3000/download', { url: this.videoUrl }, { responseType: 'blob' })
                 .subscribe({
                     next: (blob: Blob) => {
-                        saveAs(blob, 'video.mp4'); // Salva o arquivo
+                        console.log('Sucesso');
+                        // Usa o nome do arquivo padrão "audio.mp3"
+                        saveAs(blob, 'audio.mp3');
                     },
                     error: (error) => {
                         console.error('Erro ao baixar o vídeo:', error);
+                        alert('Erro ao baixar o vídeo.');
                     }
                 });
         } else {
@@ -83,9 +100,9 @@ export class MainComponent {
         }
     }
 
-    saveAs(blob: Blob, filename: string) {
+    saveAs(response:any, filename: string) {
         const a = document.createElement('a');
-        const url = window.URL.createObjectURL(blob);
+        const url = response.url;
         a.href = url;
         a.download = filename;
         document.body.appendChild(a);
